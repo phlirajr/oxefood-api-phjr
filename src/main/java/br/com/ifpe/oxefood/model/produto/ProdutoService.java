@@ -1,11 +1,13 @@
 package br.com.ifpe.oxefood.model.produto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class ProdutoService {
@@ -21,6 +23,15 @@ public class ProdutoService {
         produto.setDataCriacao(LocalDate.now());
         return repository.save(produto);
 
+    }
+        public List<Produto> findAll() {
+  
+        return repository.findAll();
+    }
+
+    public Produto findById(Long id) {
+
+        return repository.findById(id).get();
     }
 
 }
