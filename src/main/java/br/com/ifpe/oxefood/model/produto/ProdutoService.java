@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
-
 @Service
 public class ProdutoService {
     
@@ -39,7 +37,7 @@ public class ProdutoService {
     @Transactional
     public void update(Long id, Produto produtoAlterado) {
  
-       Produto produto = repository.findById(id).get();
+        Produto produto = repository.findById(id).get();
         produto.setTitulo(produtoAlterado.getTitulo());
         produto.setCodigo(produtoAlterado.getCodigo());
         produto.setDescricao(produtoAlterado.getDescricao());
