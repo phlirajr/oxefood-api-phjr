@@ -40,6 +40,7 @@ public class ProdutoService {
         Produto produto = repository.findById(id).get();
         produto.setTitulo(produtoAlterado.getTitulo());
         produto.setCodigo(produtoAlterado.getCodigo());
+        produto.setCategoria(produtoAlterado.getCategoria());
         produto.setDescricao(produtoAlterado.getDescricao());
         produto.setValorUnitario(produtoAlterado.getValorUnitario());
         produto.setTempoEntregaMinimo(produtoAlterado.getTempoEntregaMinimo());
