@@ -62,7 +62,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody ClienteRequest request) {
+    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody @Valid ClienteRequest request) {
         
        clienteService.update(id, request.build());
        return ResponseEntity.ok().build();
@@ -83,7 +83,7 @@ public class ClienteController {
     }
 
     @PutMapping("/endereco/{enderecoId}")
-    public ResponseEntity<EnderecoCliente> atualizarEnderecoCliente(@PathVariable("enderecoId") Long enderecoId, @RequestBody EnderecoClienteRequest request) {
+    public ResponseEntity<EnderecoCliente> atualizarEnderecoCliente(@PathVariable("enderecoId") Long enderecoId, @RequestBody @Valid EnderecoClienteRequest request) {
 
         EnderecoCliente endereco = clienteService.atualizarEnderecoCliente(enderecoId, request.build());
         return new ResponseEntity<EnderecoCliente>(endereco, HttpStatus.OK);
