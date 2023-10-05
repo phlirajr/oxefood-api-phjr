@@ -99,13 +99,11 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/filtrar")
-    public List<Client> filtrar(
-        @RequestParam(value = "nome", required = false) String nome,
-        @RequestParam(value = "cpf", required = false) String cpf {
-            return clienteService.filtrar(nome, cpf);
-        }  
-
-
+    // @PostMapping("/filtrar")
+    // public List<Client> filtrar(
+    //     @RequestParam(value = "nome", required = false) String nome,
+    //     @RequestParam(value = "cpf", required = false) String cpf) {
+    //         return clienteService.filtrar(nome, cpf);
+    //     }  
     
 }
