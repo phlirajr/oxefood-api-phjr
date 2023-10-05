@@ -2,6 +2,11 @@ package br.com.ifpe.oxefood.api.entregador;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.ifpe.oxefood.model.entregador.Entregador;
@@ -16,8 +21,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EntregadorRequest {
 
+    @NotBlank(message = "O Nome é de preenchimento obrigatório")
+    @Length(min = 3, max = 100, message = "O Nome deverá ter entre {min} e {max} caracteres")
     private String nome;
     
+    @NotBlank(message = "O CPF é de preenchimento obrigatório")
+    @CPF
     private String cpf;
 
     private String rg;

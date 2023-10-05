@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ifpe.oxefood.model.produto.Produto;
 import br.com.ifpe.oxefood.util.exception.EntidadeNaoEncontradaException;
 
 
@@ -125,9 +126,32 @@ public class ClienteService {
         cliente.getEnderecos().remove(endereco);
         this.save(cliente);
     }
- 
 
+    // public List<Cliente> filtrar(String nome, String cpf) {
 
+    //     List<Cliente> listaClientes = repository.findAll();
 
+    //     if ((nome != null && !"".equals(nome)) &&
+    //         (cpf == null || "".equals(cpf)) {
+    //             listaClientes = repository.findByNome(nome);
+    //     } else if (
+    //         (codigo == null || "".equals(codigo)) &&
+    //         (titulo != null && !"".equals(titulo)) &&
+    //         (idCategoria == null)) {    
+    //             listaProdutos = repository.findByTituloContainingIgnoreCaseOrderByTituloAsc(titulo);
+    //     } else if (
+    //         (codigo == null || "".equals(codigo)) &&
+    //         (titulo == null || "".equals(titulo)) &&
+    //         (idCategoria != null)) {
+    //             listaProdutos = repository.consultarPorCategoria(idCategoria); 
+    //     } else if (
+    //         (codigo == null || "".equals(codigo)) &&
+    //         (titulo != null && !"".equals(titulo)) &&
+    //         (idCategoria != null)) {
+    //             listaProdutos = repository.consultarPorTituloECategoria(titulo, idCategoria); 
+    //     }
+
+    //     return listaProdutos;
+    // }
     
 }
