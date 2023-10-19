@@ -1,7 +1,9 @@
 package br.com.ifpe.oxefood.api.client;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -10,6 +12,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import br.com.ifpe.oxefood.model.acesso.Usuario;
 import br.com.ifpe.oxefood.model.client.Cliente;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +24,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClienteRequest {
+    
+    @NotBlank(message = "O e-mail é de preenchimento obrigatório")
+    @Email
+    private String email;
+
+    @NotBlank(message = "A senha é de preenchimento obrigatório")
+    private String password;
 
     @NotNull(message = "O Nome é de preenchimento obrigatório")
     @NotBlank(message = "O Nome é de preenchimento obrigatório")
@@ -42,6 +52,7 @@ public class ClienteRequest {
 
     public Cliente build() {
         return Cliente.builder()
+            .usuario(buildUsuario())
             .nome(nome)
             .dataNascimento(dataNascimento)
             .cpf(cpf)
@@ -49,5 +60,11 @@ public class ClienteRequest {
             .foneFixo(foneFixo)
             .build();
     }
-
+    public Usuario buildUsuario() {	
+        return Usuario.builder()
+            .username(email)
+            .password(password)
+            .roles(Arrays.asList(Usuario.ROLE_CLIENTE))
+            .build();
+    }
 }
